@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/catkin_ws/install_isolated
+
+Name: ublox_gps
+Description: Description of ublox_gps
+Version: 0.0.5
+Cflags: -I/home/ubuntu/catkin_ws/install_isolated/include
+Libs: -L/home/ubuntu/catkin_ws/install_isolated/lib -lublox_gps
+Requires: roscpp ublox_msgs ublox_serialization

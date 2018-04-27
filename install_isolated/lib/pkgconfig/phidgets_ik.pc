@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/catkin_ws/install_isolated
+
+Name: phidgets_ik
+Description: Description of phidgets_ik
+Version: 0.7.5
+Cflags: -I/home/ubuntu/catkin_ws/install_isolated/include -I/usr/include
+Libs: -L/home/ubuntu/catkin_ws/install_isolated/lib -lphidgets_ik -l:/usr/lib/aarch64-linux-gnu/libboost_thread.so -l:/usr/lib/aarch64-linux-gnu/libboost_chrono.so -l:/usr/lib/aarch64-linux-gnu/libboost_system.so -l:/usr/lib/aarch64-linux-gnu/libboost_date_time.so -l:/usr/lib/aarch64-linux-gnu/libboost_atomic.so -l:/usr/lib/aarch64-linux-gnu/libpthread.so
+Requires: geometry_msgs nodelet phidgets_api roscpp sensor_msgs std_msgs message_runtime tf

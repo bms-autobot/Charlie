@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/catkin_ws/devel_isolated/phidgets_high_speed_encoder
+
+Name: phidgets_high_speed_encoder
+Description: Description of phidgets_high_speed_encoder
+Version: 0.7.5
+Cflags: -I/home/ubuntu/catkin_ws/devel_isolated/phidgets_high_speed_encoder/include
+Libs: -L/home/ubuntu/catkin_ws/devel_isolated/phidgets_high_speed_encoder/lib 
+Requires: libphidget21 phidgets_api roscpp std_msgs message_runtime sensor_msgs

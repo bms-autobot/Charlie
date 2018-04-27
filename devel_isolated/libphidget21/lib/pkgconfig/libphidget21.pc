@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/catkin_ws/devel_isolated/libphidget21
+
+Name: libphidget21
+Description: Description of libphidget21
+Version: 0.7.5
+Cflags: 
+Libs: -L/home/ubuntu/catkin_ws/devel_isolated/libphidget21/lib 
+Requires: 

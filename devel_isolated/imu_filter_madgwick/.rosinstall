@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/ubuntu/catkin_ws/devel_isolated/imu_filter_madgwick/setup.sh

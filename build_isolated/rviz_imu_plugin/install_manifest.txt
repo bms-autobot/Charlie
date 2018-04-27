@@ -1,0 +1,12 @@
+/home/ubuntu/catkin_ws/install_isolated/_setup_util.py
+/home/ubuntu/catkin_ws/install_isolated/env.sh
+/home/ubuntu/catkin_ws/install_isolated/setup.bash
+/home/ubuntu/catkin_ws/install_isolated/setup.sh
+/home/ubuntu/catkin_ws/install_isolated/setup.zsh
+/home/ubuntu/catkin_ws/install_isolated/.rosinstall
+/home/ubuntu/catkin_ws/install_isolated/lib/pkgconfig/rviz_imu_plugin.pc
+/home/ubuntu/catkin_ws/install_isolated/share/rviz_imu_plugin/cmake/rviz_imu_pluginConfig.cmake
+/home/ubuntu/catkin_ws/install_isolated/share/rviz_imu_plugin/cmake/rviz_imu_pluginConfig-version.cmake
+/home/ubuntu/catkin_ws/install_isolated/share/rviz_imu_plugin/package.xml
+/home/ubuntu/catkin_ws/install_isolated/lib/librviz_imu_plugin.so
+/home/ubuntu/catkin_ws/install_isolated/share/rviz_imu_plugin/plugin_description.xml

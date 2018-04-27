@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/catkin_ws/devel_isolated/phidgets_api
+
+Name: phidgets_api
+Description: Description of phidgets_api
+Version: 0.7.5
+Cflags: -I/home/ubuntu/catkin_ws/src/phidgets_drivers/phidgets_api/include
+Libs: -L/home/ubuntu/catkin_ws/devel_isolated/phidgets_api/lib -lphidgets_api
+Requires: libphidget21

@@ -1,0 +1,15 @@
+/home/ubuntu/catkin_ws/install_isolated/_setup_util.py
+/home/ubuntu/catkin_ws/install_isolated/env.sh
+/home/ubuntu/catkin_ws/install_isolated/setup.bash
+/home/ubuntu/catkin_ws/install_isolated/setup.sh
+/home/ubuntu/catkin_ws/install_isolated/setup.zsh
+/home/ubuntu/catkin_ws/install_isolated/.rosinstall
+/home/ubuntu/catkin_ws/install_isolated/lib/pkgconfig/libphidget21.pc
+/home/ubuntu/catkin_ws/install_isolated/share/libphidget21/cmake/libphidget21-extras.cmake
+/home/ubuntu/catkin_ws/install_isolated/share/libphidget21/cmake/libphidget21Config.cmake
+/home/ubuntu/catkin_ws/install_isolated/share/libphidget21/cmake/libphidget21Config-version.cmake
+/home/ubuntu/catkin_ws/install_isolated/share/libphidget21/package.xml
+/home/ubuntu/catkin_ws/install_isolated/include/libphidget21/phidget21.h
+/home/ubuntu/catkin_ws/install_isolated/lib/libphidget21.so
+/home/ubuntu/catkin_ws/install_isolated/lib/libphidget21.so.0
+/home/ubuntu/catkin_ws/install_isolated/lib/libphidget21.so.0.0.0
