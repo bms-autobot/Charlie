@@ -18,9 +18,9 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/ubuntu/catkin_ws/devel_isolated/phidgets_high_speed_encoder/include"
   "/home/ubuntu/catkin_ws/src/phidgets_drivers/phidgets_api/include"
+  "/home/ubuntu/catkin_ws/devel_isolated/libphidget21/include"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
-  "/home/ubuntu/catkin_ws/devel_isolated/libphidget21/include"
   )
 
 # Targets to which this target links.

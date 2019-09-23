@@ -18,13 +18,13 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/ubuntu/catkin_ws/devel_isolated/sick_ldmrs_driver/include"
   "/home/ubuntu/catkin_ws/src/sick_ldmrs_laser/sick_ldmrs_driver/include"
+  "/home/ubuntu/catkin_ws/devel_isolated/sick_ldmrs_msgs/include"
   "/home/ubuntu/catkin_ws/src/sick_ldmrs_laser/sick_ldmrs_msgs/include"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/eigen3"
   "/usr/include/pcl-1.7"
-  "/home/ubuntu/catkin_ws/devel_isolated/sick_ldmrs_msgs/include"
-  "/home/ubuntu/catkin_ws/devel_isolated/sick_ldmrs_msgs/include/sick_ldmrs"
+  "/usr/include/pcl-1.7/sick_ldmrs"
   "/home/ubuntu/catkin_ws/install_isolated/include"
   )
 

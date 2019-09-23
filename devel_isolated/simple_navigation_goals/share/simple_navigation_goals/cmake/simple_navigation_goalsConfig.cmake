@@ -109,7 +109,7 @@ if(NOT " " STREQUAL " ")
   endforeach()
 endif()
 
-set(libraries "")
+set(libraries "simple_navigation_goals")
 foreach(library ${libraries})
   # keep build configuration keywords, target names and absolute libraries as-is
   if("${library}" MATCHES "^(debug|optimized|general)$")
@@ -122,7 +122,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/ubuntu/catkin_ws/devel_isolated/simple_navigation_goals/lib;/home/ubuntu/catkin_ws/install_isolated/lib;/home/ubuntu/catkin_ws/devel/lib;/opt/ros/kinetic/lib)
+    foreach(path /home/ubuntu/catkin_ws/devel_isolated/simple_navigation_goals/lib;/home/ubuntu/catkin_ws/devel_isolated/zed_wrapper/lib;/home/ubuntu/catkin_ws/devel_isolated/ublox_gps/lib;/home/ubuntu/catkin_ws/devel_isolated/ublox_msgs/lib;/home/ubuntu/catkin_ws/devel_isolated/ublox_serialization/lib;/home/ubuntu/catkin_ws/devel_isolated/ublox/lib;/home/ubuntu/catkin_ws/devel_isolated/simple_navigation_goals/lib;/home/ubuntu/catkin_ws/devel_isolated/sick_ldmrs_tools/lib;/home/ubuntu/catkin_ws/devel_isolated/sick_ldmrs_driver/lib;/home/ubuntu/catkin_ws/devel_isolated/sick_ldmrs_msgs/lib;/home/ubuntu/catkin_ws/devel_isolated/sick_ldmrs_laser/lib;/home/ubuntu/catkin_ws/devel_isolated/sick_ldmrs_description/lib;/home/ubuntu/catkin_ws/devel_isolated/rviz_imu_plugin/lib;/home/ubuntu/catkin_ws/devel_isolated/robot_setup_tf/lib;/home/ubuntu/catkin_ws/devel_isolated/phidgets_imu/lib;/home/ubuntu/catkin_ws/devel_isolated/phidgets_ik/lib;/home/ubuntu/catkin_ws/devel_isolated/phidgets_high_speed_encoder/lib;/home/ubuntu/catkin_ws/devel_isolated/phidgets_drivers/lib;/home/ubuntu/catkin_ws/devel_isolated/phidgets_api/lib;/home/ubuntu/catkin_ws/devel_isolated/line_tracking/lib;/home/ubuntu/catkin_ws/devel_isolated/libphidget21/lib;/home/ubuntu/catkin_ws/devel_isolated/imu_tools/lib;/home/ubuntu/catkin_ws/devel_isolated/imu_filter_madgwick/lib;/home/ubuntu/catkin_ws/devel_isolated/imu_complementary_filter/lib;/home/ubuntu/catkin_ws/devel_isolated/gps/lib;/home/ubuntu/catkin_ws/devel_isolated/charlie_code/lib;/opt/ros/kinetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
@@ -153,7 +153,7 @@ foreach(t ${simple_navigation_goals_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "")
+set(depends "actionlib;move_base_msgs;roscpp")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls

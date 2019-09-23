@@ -1,6 +1,15 @@
 #!/usr/bin/python
-import math
 
+# Tyler 4/6/19
+# Copied code from - https://answers.ros.org/question/185907/help-with-some-code-send-a-navigation-goal/
+import rospy
+import actionlib
+from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
+from geometry_msgs.msg import PoseWithCovarianceStamped, Quaternion
+from tf.transformations import quaternion_from_euler, euler_from_quaternion
+#
+
+import math
 
 # **************************************************************************
 # Func:    fetch_gps_points
@@ -9,10 +18,6 @@ import math
 #          a usable form, and sends a waypoint to ROS whenever it reaches
 #          its current goal until there are not more waypoints left.
 # **************************************************************************
-
-
-
-
 
 # *************************************************************************
 # Func:    degreesToMeters
@@ -37,15 +42,14 @@ def degreesToMeters(y, x, latitude):
 	# Radius of the Earth in meters
 	earth_radius = 6378137
 	
-
 	# Intermediate values used in calculations
 	x_a = 0.0
 	x_c = 0.0
-	x_d = 0.0
+	x_d = 0.0 # y in meters
 
 	y_a = 0.0
 	y_c = 0.0
-	y_d = 0.0
+	y_d = 0.0 # x in meters
 	
 	# Convert GPS coordinates from degrees to radians
 	x = math.radians(x)
@@ -64,7 +68,19 @@ def degreesToMeters(y, x, latitude):
 	
 	ret = [y_d,x_d]
 	return ret
+
+def createNavGoal(x, y, yaw) # Tyler - 4/6/19
+	mbGoal = MoveBaseGoal()
+	mbGoal.target_pose.header.frame_id = 'map'
+	mbGoal.target_pose.pose.position.x = x
+	mbGoal.target_pose.pose.position.y = y
+	mbGoal.target_pose.pose.position.z = 0.0
 	
+	angle = radians(yaw)
+	quat = quaternion_from_euler(0.0, 0.0, angle)
+	mbGoal.target_pose.pose.orientation = Quaternion(*quat.tolist())
+
+	return mbGoal
 
 # NOTE: The first waypoint will be indexed at 1 since I append 
 # the coordinates to the list and the 0 index is an empty list.
@@ -73,11 +89,12 @@ coordinateList = [[]]
 # NOTE: The waypoint count starts at 0 since it is 
 # immediately incremented when we calculate the first waypoint
 waypointCount = 0
-currentOrientation = 180.0
+currentOrientation = 180.0 # This is dumb. Don't do this or we need to start Charlie facing a set direction. -Tyler, 3/24/19 
 currentOrientation = math.radians(currentOrientation)
 
-currentCoordinates = [47.2175, -88.5528]
+currentCoordinates = [47.2175, -88.5528] # Also this is dumb for the same reason # is there a way to grab the current coordinates with a function? -Ari 4/3/19
 nextCoordinates = [47.2175, -88.5528]
+
 currentLocation = [0.0, 0.0]
 nextWaypoint = [0.0,0.0]
 distanceRemaining = [0.0, 0.0]
@@ -111,7 +128,6 @@ while waypointCount < len(coordinateList):
 		print "Current GPS Coordinates:"
 		print str(currentCoordinates)
 		print "Target GPS Coordinates:"
-		print str(nextCoordinates)
 		
 		# Calculate next waypoint. It will be a distance from Charlie's current location
 		nextWaypoint = degreesToMeters(nextCoordinates[0] - currentCoordinates[0], nextCoordinates[1] - currentCoordinates[1], nextCoordinates[0])

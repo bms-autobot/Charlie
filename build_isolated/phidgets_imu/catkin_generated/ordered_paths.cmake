@@ -1,1 +1,1 @@
-set(ORDERED_PATHS "/opt/ros/kinetic/lib;/home/ubuntu/catkin_ws/devel_isolated/phidgets_api/lib")
+set(ORDERED_PATHS "/home/ubuntu/catkin_ws/devel_isolated/phidgets_api/lib;/opt/ros/kinetic/lib")

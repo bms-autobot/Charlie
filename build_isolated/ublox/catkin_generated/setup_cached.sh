@@ -7,6 +7,3 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/ubuntu/catkin_ws/devel_isolated/ublox:$CMAKE_PREFIX_PATH"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/ubuntu/catkin_ws/devel_isolated/ublox/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/ubuntu/catkin_ws/src/ublox/ublox:$ROS_PACKAGE_PATH"

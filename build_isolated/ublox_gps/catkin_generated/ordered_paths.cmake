@@ -1,1 +1,1 @@
-set(ORDERED_PATHS "/home/ubuntu/catkin_ws/install_isolated/lib;/opt/ros/kinetic/lib")
+set(ORDERED_PATHS "/opt/ros/kinetic/lib;/home/ubuntu/catkin_ws/install_isolated/lib")

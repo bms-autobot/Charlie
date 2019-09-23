@@ -7,9 +7,3 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/ubuntu/catkin_ws/devel_isolated/ublox_msgs:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/ubuntu/catkin_ws/devel_isolated/ublox_msgs/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/ubuntu/catkin_ws/devel_isolated/ublox_msgs/lib/pkgconfig:$PKG_CONFIG_PATH"
-export PYTHONPATH="/home/ubuntu/catkin_ws/devel_isolated/ublox_msgs/lib/python2.7/dist-packages:$PYTHONPATH"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/ubuntu/catkin_ws/devel_isolated/ublox_msgs/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/ubuntu/catkin_ws/src/ublox/ublox_msgs:$ROS_PACKAGE_PATH"

@@ -5,6 +5,9 @@
   <include file="$(find zed_wrapper)/launch/zed_tf.launch" />
   <node name="zed_wrapper_node" pkg="zed_wrapper" type="zed_wrapper_node" output="screen">
 
+  <!-- swapping name and pkg in line above (ari 4/3/19) -->
+  <!-- <node pkg="zed_wrapper" name="zed_wrapper_node" type="zed_wrapper_node" output="screen"> -->
+
     <!-- SVO file path -->
     <param name="svo_filepath" value="$(arg svo_file)" />
 

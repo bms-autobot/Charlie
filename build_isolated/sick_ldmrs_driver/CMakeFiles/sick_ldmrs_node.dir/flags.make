@@ -6,5 +6,5 @@ CXX_FLAGS = -O3 -DNDEBUG
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_PACKAGE_NAME=\"sick_ldmrs_driver\"
 
-CXX_INCLUDES = -I/home/ubuntu/catkin_ws/devel_isolated/sick_ldmrs_driver/include -I/home/ubuntu/catkin_ws/src/sick_ldmrs_laser/sick_ldmrs_driver/include -I/home/ubuntu/catkin_ws/src/sick_ldmrs_laser/sick_ldmrs_msgs/include -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -I/usr/include/pcl-1.7 -I/home/ubuntu/catkin_ws/devel_isolated/sick_ldmrs_msgs/include -I/home/ubuntu/catkin_ws/devel_isolated/sick_ldmrs_msgs/include/sick_ldmrs -I/home/ubuntu/catkin_ws/install_isolated/include 
+CXX_INCLUDES = -I/home/ubuntu/catkin_ws/devel_isolated/sick_ldmrs_driver/include -I/home/ubuntu/catkin_ws/src/sick_ldmrs_laser/sick_ldmrs_driver/include -I/home/ubuntu/catkin_ws/devel_isolated/sick_ldmrs_msgs/include -I/home/ubuntu/catkin_ws/src/sick_ldmrs_laser/sick_ldmrs_msgs/include -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -I/usr/include/pcl-1.7 -I/usr/include/pcl-1.7/sick_ldmrs -I/home/ubuntu/catkin_ws/install_isolated/include 
 

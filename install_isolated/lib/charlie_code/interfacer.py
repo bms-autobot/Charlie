@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+#THIS IS INTERFACER THAT GETS RUN-Tyler 2/7/19
 import rospy
 import sys
 import serial
@@ -40,6 +40,7 @@ globalRightVelocity = 2047
 
 x = 0.0
 y = 0.0
+vth = 0.0 # 03/20/19 - Tyler
 
 vx = 0.0
 vy = 0.0
@@ -132,7 +133,7 @@ def twistCallback(data):
 
     # get linear x and angular z for drive info
     velocity = data.linear.x
-    turn  = data.angular.z
+    turn = data.angular.z
 
     # calculate wheel velocities
     leftVelocity = (velocity - turn * WHEEL_SEPARATION / 2.0) / WHEEL_RADIUS
@@ -185,13 +186,12 @@ def wheel_callback(left_wheel, right_wheel):
     y += linear_encoder * math.sin(direction);
     heading += angular_encoder;
 
-    print 'X: ' + str(x) + '\tY: ' + str(y) + '\theading: ' + str(heading)
+    # print 'X: ' + str(x) + '\tY: ' + str(y) + '\theading: ' + str(heading)
 
     # Update old values
     PreviousLeftEncoderCounts = left_wheel
     PreviousRightEncoderCounts = right_wheel
     last_time_encoder = current_time_encoder
-
 
 def twistListener():
     global x
@@ -208,11 +208,13 @@ def twistListener():
 
     odometry_publisher = OdometryPub()
 
+######
     #pub = rospy.Publisher("/odom", Odometry, queue_size=10)
     #frame_id = "/odom"
     #child_frame_id = "/base_link"
 
-    ######odom_broadcaster = tf.TransformBroadcaster()
+    #odom_broadcaster = tf.TransformBroadcaster()
+######
 
     connected = False
 
@@ -237,7 +239,7 @@ def twistListener():
                     encoders = re.split(r'\t+', line)
                     # print encoders
                     wheel_callback(int(encoders[1]), int(encoders[2]))
-
+######
                     #msg = Odometry()
                     #msg.header.stamp = current_time
                     #msg.header.frame_id = "odom"
@@ -246,13 +248,14 @@ def twistListener():
                     #msg.pose.pose.position = Point(x, y, 0.0)
                     #q = tf.transformations.quaternion_from_euler(0, 0, heading)
                     #msg.pose.pose.orientation = Quaternion(*q)
-                    ####msg.twist.twist.linear = Point(vx, vy, 0.0)
-                    ####msg.twist.twist.angular.x = 0.0
-                    ####msg.twist.twist.angular.y = 0.0
-                    ###msg.twist.twist.angular.z = vth
+                    #msg.twist.twist.linear = Point(vx, vy, 0.0)
+                    #msg.twist.twist.angular.x = 0.0
+                    #msg.twist.twist.angular.y = 0.0
+                    #msg.twist.twist.angular.z = vth
 
                     # publish odometry and send drive command
                     #pub.publish(msg)
+######
                     odometry_publisher.update()
                     ser.write((str(DRIVE_MSG) + "\n").encode())
                     ser.write((str(globalLeftVelocity) + "\t" + str(globalRightVelocity) + "\n").encode())
@@ -277,8 +280,8 @@ def odomPublisher():
     msg.header.frame_id = frame_id
     msg.child_frame_id = child_frame_id
     msg.pose.pose.position = Point(positionVector[0], positionVector[1], positionVector[2])
-    #msg.pose.pose.orientation = Quaternion(*)
 
+    #msg.pose.pose.orientation = Quaternion(*)
 
 if __name__ == "__main__":
     try:

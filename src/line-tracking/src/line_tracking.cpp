@@ -189,6 +189,8 @@ public:
 			float p3 = vertPixToDist(l[3]);
 
 			//Add points to the point cloud
+			/* Removed this - Tyler 3/30/19 */
+			/* re-added this for testing - Ari 4/5/19 */
 			point_cloud.points[index].y = p1;
 			point_cloud.points[index].z = 0.5;
 			point_cloud.points[index].x = p0;
@@ -196,11 +198,16 @@ public:
 			point_cloud.points[index].y = p3;
 			point_cloud.points[index].z = 0.5;
 			point_cloud.points[index].x = p2;
+			
 
 			//Print the points to the screen
+			/*
 			cout << p1 << " " << p0 << endl;
 			cout << p3 << " " << p2 << endl;
-			
+			*/			
+
+			/* Removed this - Tyler 3/30/19 */
+			/* re-added this for testing - Ari 4/5/19 */
 			double tempX = p2, tempY = p3;
 			while (dist(p0,p1,tempX,tempY)>0.001) {
 				tempX = (p0+tempX)/2;
@@ -221,9 +228,28 @@ public:
 				point_cloud.points[index].x = tempX;
 				index++;
 			}
+			
+			
+			// Added this - Tyler 3/30/19
+			/* removed this for testing - Ari 4/5/19
+			float minX = getMin(p0, p2), maxX = getMax(p0, p2);
+			float minY = getMin(p1, p3), maxY = getMax(p1, p3);
+			float distance = dist(p0, p1, p2, p3);
+			float stepFactor = .1;
+			float xStep = stepFactor * (maxX - minX) / distance, yStep = stepFactor * (maxY - minY) / distance;
+			float tempX = minX - xStep, tempY = minY - yStep;
+			while (tempX < maxX && tempY < maxY) {
+				tempX += xStep;
+				tempY += yStep;
+				point_cloud.points[index].x = tempX;
+				point_cloud.points[index].y = tempY;
+				point_cloud.points[index].z = 0.5;
+				index++;
+			}
+			*/
 		}
-		//Space things out
-		cout << endl;
+		// Space things out
+		// cout << endl;
 		
 		//Show the monitoring window
 		namedWindow( "Line Tracking", WINDOW_NORMAL );// Create a window for display.
@@ -318,6 +344,18 @@ int vertDistToPix(float dist) {
 	return pixel;
 }
 
+float min(float n1, float n2) {
+	if (n1 < n2)
+		return n1;
+	return n2;
+}
+
+float max(float n1, float n2) {
+	if (n1 < n2)
+		return n2;
+	return n1;
+}
+
 int main(int argc, char** argv) {
 	//Define the message handeler
 	signal(SIGINT, intHandler);
@@ -370,7 +408,7 @@ int main(int argc, char** argv) {
 	//Close the files
 	pixels.close();
 	points.close();
-
+	
 	//End the program
 	return 0;
 }

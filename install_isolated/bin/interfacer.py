@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+#This is not being run - Ari 3/29/19
+
 import rospy
 import sys
 import serial

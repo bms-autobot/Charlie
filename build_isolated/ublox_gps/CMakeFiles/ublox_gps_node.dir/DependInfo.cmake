@@ -17,9 +17,9 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/ubuntu/catkin_ws/src/ublox/ublox_gps/include"
-  "/home/ubuntu/catkin_ws/install_isolated/include"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
+  "/home/ubuntu/catkin_ws/install_isolated/include"
   )
 
 # Targets to which this target links.

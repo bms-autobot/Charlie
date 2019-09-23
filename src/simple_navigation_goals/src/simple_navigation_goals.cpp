@@ -1,15 +1,16 @@
-//BM TEST - Updated 4/09/2018
+//BM TEST - Updated 5/2/2018
 #include <ros/ros.h>
 #include <sstream>
-//#include <cmath>
+#include <cmath>
 #include <cstdio>
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
 #include <tf/transform_datatypes.h>
-//#include "std_msgs/String.h"
+#include "std_msgs/String.h"
 #include <move_base_msgs/MoveBaseAction.h>
 #include <actionlib/client/simple_action_client.h>
+#include <nav_msgs/Odometry.h>
 
 #define PI 3.14159265359
 
@@ -67,28 +68,15 @@ Coords distanceBetweenCoordinates(float nextLat, float nextLong, float currLat, 
 
   float y = sin(dLon) * cos(lat2);
   float x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon);
-  float bearing = atan2(y,x);//* (180/PI);
-  result.bearing = bearing;
+  //float bearing = atan2(-x,y);//* (180/PI);
+  //result.bearing = bearing;
   result.hypot = solution;
-  printf("bearing = %f\n", bearing);
-
-  /*
-  if (bearing > 1)
-  {
-    bearing = bearing - 1.0;
-  }
-  printf("acos = %f, asin = %f\n", acos(bearing), asin(bearing));
-  result.longitude = solution * acos(bearing);
-  result.latitude = solution * asin(bearing);
-  printf("y = %f\nx = %f\n", result.longitude, result.latitude);
-  double midLat = (nextLat + currLat)/2;
-  result.latitude = dLat * (111132.954 - 559.822 * cos(2 * midLat) + 1.175 * cos(4 * midLat));
-  float thisthing = dLat * 111132.954;
-  printf("thisone: %f\n", thisthing);
-  result.longitude = dLon * (6367449 * cos(midLat));
-  printf("midLat = %f\ndiffLat = %f\ny = %f\nx = %f\n", midLat, dLat, result.longitude, result.latitude);
-  */
-
+  //printf("prev bearing = %f\n", bearing*(180/PI));
+  //bearing = atan2(-dLat,dLon);
+  //printf("newcalc bearing = %f\n", bearing*(180/PI));
+  float bearing = atan2(dLon,dLat);
+  printf("newcalc2 bearing = %f\n", bearing*(180/PI));
+  result.bearing = bearing;
   return result;
 }
 
@@ -141,7 +129,9 @@ float getCurrLatitude()
   std::string latitude = GetStdoutFromCommand("rostopic echo -n 1 gps/fix/latitude");
   int spot = latitude.find("\n");
   latitude.replace(spot, 1, "\0");
-  return string_to_float(latitude);
+  float lat = string_to_float(latitude);
+  printf("Current LAT: %f\n",lat);
+  return lat;
 }
 
 /******************************************************************
@@ -154,7 +144,63 @@ float getCurrLongitude()
   std::string longitude = GetStdoutFromCommand("rostopic echo -n 1 gps/fix/longitude");
   int spot = longitude.find("\n");
   longitude.replace(spot, 1, "\0");
-  return string_to_float(longitude);
+  float lon = string_to_float(longitude);
+  printf("Current LON: %f\n",lon);
+  return lon;
+}
+
+/******************************************************************
+ * Get the Current X value from Magnetometer
+ * 
+ * @return  The float value of X
+ ******************************************************************/
+float getMagX()
+{
+  std::string mag = "nan";
+  while (!mag.compare("nan"))
+  {
+	mag = GetStdoutFromCommand("rostopic echo -n 1 imu/mag/magnetic_field/x");
+    int spot = mag.find("\n");
+    mag.replace(spot, mag.length()-spot, "\0");
+    //std::cout << "Got String X: " << mag << "\n";
+  } 
+  float lon = string_to_float(mag);
+  printf("Current Mag X: %f\n",lon);
+  return lon;
+}
+
+/******************************************************************
+ * Get the Current Y value from Magnetometer
+ * 
+ * @return  The float value of Y
+ ******************************************************************/
+float getMagY()
+{
+  std::string mag = "nan";
+  while (!mag.compare("nan"))
+  {
+	mag = GetStdoutFromCommand("rostopic echo -n 1 imu/mag/magnetic_field/y");
+    int spot = mag.find("\n");
+    mag.replace(spot, mag.length()-spot, "\0");
+    //std::cout << "Got String Y: " << mag << "\n";
+  } 
+  float lon = string_to_float(mag);
+  printf("Current Mag Y: %f\n",lon);
+  return lon;
+}
+
+/******************************************************************
+ * Get the heading from Magnetometer
+ * 
+ * @return  The degree angle heading
+ ******************************************************************/
+float getMagDirection()
+{
+    float magX = getMagX();
+    float magY = getMagY();
+    float magDir = atan2(magY, magX) * (180/PI);
+    printf("Current Mag Direction: %f\n",magDir);
+	return magDir;
 }
 
 /******************************************************************
@@ -182,9 +228,9 @@ Coords getNextWaypoint(int line)
   }
   int spot = x.find(",");
   x.replace(spot, 1, "\0");
-  returnVal.latitude = string_to_float(x.substr(spot+1));
+  returnVal.latitude = string_to_float(x);
   printf("Target LAT: %f\n", returnVal.latitude);
-  returnVal.longitude = string_to_float(x);
+  returnVal.longitude = string_to_float(x.substr(spot+1));
   printf("Target LONG: %f\n", returnVal.longitude);
   coordFile.close();
   returnVal.bearing = 0;
@@ -210,9 +256,16 @@ Coords split(int splits, Coords next)
   return result;
 }
 
+/*
+void gpsSub(const std_msgs::String::ConstPtr& msg)
+{
+  ROS_INFO(msg->data.c_str);
+
+}
+*/
 
 /******************************************************************
- * 4/09/2018
+ * 10/13/2018
  ******************************************************************/
 int main(int argc, char** argv)
 {
@@ -225,10 +278,14 @@ int main(int argc, char** argv)
   while(!ac.waitForServer(ros::Duration(5.0))){
     ROS_INFO("Waiting for the move_base action server to come up");
   }
-  
-  int errorRange = .0001;
+  //ros::NodeHandle n;
+  //ros::Subscriber sub = n.subscribe("gps/fix", 100, gpsSub);
+  int first = 1;
+  int oriented = 0; // is the robot going the right way?
+  int errorRange = .0001; 
   int line = 1;
-  int count = 5; // the count on how many cuts until goal
+  int count = 3; // the count on how many cuts until goal
+  //tf::Quaternion q_orig, q_new;
   move_base_msgs::MoveBaseGoal goal;
   Coords currLocation; // the current location
   Coords nextWaypoint; // the next GPS waypoint
@@ -239,31 +296,66 @@ int main(int argc, char** argv)
   currLocation.latitude = getCurrLatitude(); // current latitude
   currLocation.longitude = getCurrLongitude(); // get current Longitude
   nextWaypoint = getNextWaypoint(line); // get the first line
+	
+  // was used for magnetometer [calibration
+  while(1)
+  {
+    getMagDirection();
+  }
 
-  //std::cout << "Latitude: " << currLocation.latitude << "\n"; // print out the currLat
-  //std::cout << "Longitude: " << currLocation.longitude << "\n"; // print out the currLong
-  printf("Current LAT: %f\nCurrent LONG: %f\n",currLocation.latitude, currLocation.longitude);
-  //nextxy = distanceBetweenCoordinates(47.1191671, -88.5471808, 47.1189097, -88.5478142); // get the distance (x,y) between here and the next gps waypoint
-  nextxy = distanceBetweenCoordinates(nextWaypoint.latitude, nextWaypoint.longitude, currLocation.latitude, currLocation.longitude); // get the distance (x,y) between here and the next gps waypoint
+  //GO FORWARD 5 METERS AND COMPARE GPS WAYPOINTS TO GET DIRECTION?
 
-  //std::cout << "x: " << nextxy.latitude << "\n";
-  //std::cout << "y: " << nextxy.longitude << "\n";
+  //nextxy = distanceBetweenCoordinates(47.1187443, -88.5471899, 47.1190510, -88.5471899); // due south
+  //nextxy = distanceBetweenCoordinates(47.1200510, -88.5471899, 47.1190510, -88.5461899); // due west
+  //nextxy = distanceBetweenCoordinates(47.1200510, -88.5461899, 47.1200510, -88.5471899); // due east
+  //nextxy = distanceBetweenCoordinates(47.1190510, -88.5461899, 47.1200510, -88.5471899); // due southeast
+  //nextxy = distanceBetweenCoordinates(47.1190510, -88.5471899, 47.1187443, -88.5471899); // due north
 
-  //we'll send a goal to the robot to move 1 meter forward
-  goal.target_pose.header.frame_id = "/map"; //"base_link";
+  //we'll send a goal to the robot to move forward
+  goal.target_pose.header.frame_id = "/map"; //"map"; //"base_link";
   goal.target_pose.header.stamp = ros::Time::now();
 
   while(1)
-  {   
-	  splitxy = split(count, nextxy);
-	  tf::Quaternion q = tf::createQuaternionFromRPY(0,0,nextxy.bearing);
-	  ROS_INFO_STREAM(q);
-	  q.normalize();
-	  quaternionTFToMsg(q, goal.target_pose.pose.orientation);
-      goal.target_pose.pose.position.y = 0;
-	  goal.target_pose.pose.position.x = splitxy.hypot;
+  {   float temp = nextxy.bearing;
+	  nextxy = distanceBetweenCoordinates(nextWaypoint.latitude, nextWaypoint.longitude, currLocation.latitude, currLocation.longitude); // get the distance (x,y) between here and the next gps waypoint
+	  //splitxy = split(count, nextxy);
+
+	  if (!oriented && first)
+	  {
+	    tf::Quaternion q = tf::createQuaternionFromRPY(0, 0, -nextxy.bearing);
+	    goal.target_pose.header.frame_id = "/map"; //"map"; //"base_link";
+	    goal.target_pose.pose.orientation.w = 0;
+		ROS_INFO_STREAM(q);
+	    q.normalize();
+	    quaternionTFToMsg(q, goal.target_pose.pose.orientation);
+		goal.target_pose.pose.position.x = 0.5;
+		first = 0;
+	    //goal.target_pose.pose.orientation.z = nextxy.bearing;
+	  }
+	  else if (!oriented && !first)
+	  {
+	    tf::Quaternion q = tf::createQuaternionFromRPY(0, 0, -nextxy.bearing - temp);
+	    goal.target_pose.header.frame_id = "/base_link"; //"map"; //"base_link";
+	    goal.target_pose.pose.orientation.w = 0;
+		ROS_INFO_STREAM(q);
+	    q.normalize();
+	    quaternionTFToMsg(q, goal.target_pose.pose.orientation);
+		goal.target_pose.pose.position.x = 0.5;
+	    //goal.target_pose.pose.orientation.z = nextxy.bearing;
+
+	  }
+	  else
+	  {
+		// craft a goal straight ahead
+		goal.target_pose.header.frame_id = "/base_link";  
+	    goal.target_pose.pose.position.x = nextxy.hypot;
+		goal.target_pose.pose.position.y = 0;
+        goal.target_pose.pose.orientation.z = 0;
+	    goal.target_pose.pose.orientation.w = 1;
+	  }
+
+
 	  //ROS_INFO_STREAM(goal.target_pose.pose);
-	  goal.target_pose.pose.orientation.w = 1.0;
 	  //goal.target_pose.pose.orientation.z = nextxy.bearing;
 	  ROS_INFO_STREAM(goal);
 
@@ -275,16 +367,32 @@ int main(int argc, char** argv)
 	  if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
 	  {
 	    ROS_INFO("SUCCESS");
+	    if (!oriented)
+		{
+		  oriented = 1; 
+		}
+		else
+		{
+		  oriented = 0;
+		}
 	    count--;
 		// then get next coordinates
-	    if ((getCurrLatitude() <= nextWaypoint.latitude + errorRange) && (getCurrLatitude() >= nextWaypoint.latitude - errorRange))
+	    if (((getCurrLatitude() <= nextWaypoint.latitude + errorRange) && (getCurrLatitude() >= nextWaypoint.latitude - errorRange)) || count == 0)
 	    {
-	      if ((getCurrLongitude() <= nextWaypoint.longitude + errorRange) && (getCurrLongitude() >= nextWaypoint.longitude - errorRange))
+	      if (((getCurrLongitude() <= nextWaypoint.longitude + errorRange) && (getCurrLongitude() >= nextWaypoint.longitude - errorRange)) || count == 0)
 	      {
-		count = 5; //reset number of splits to make
-		line++;
-		nextWaypoint = getNextWaypoint(line);
-		nextxy = distanceBetweenCoordinates(nextWaypoint.latitude, nextWaypoint.longitude, currLocation.latitude, currLocation.longitude); // get the distance (x,y) between here and the next gps waypoint
+			ROS_INFO("GOT TO WAYPOINT");
+			count = 3; //reset number of splits to make
+			//oriented = 0;
+			line++;
+			if (getNextWaypoint(line).latitude == 0)
+			{
+			  ROS_INFO("RUN COMPLETE!");
+			  break;
+			}
+			nextWaypoint = getNextWaypoint(line);
+			// get the distance (x,y) between here and the next gps waypoint
+			//nextxy = distanceBetweenCoordinates(nextWaypoint.latitude, nextWaypoint.longitude, currLocation.latitude, currLocation.longitude); 
 	      }
 	    }
 	  }

@@ -1,0 +1,3 @@
+<launch>
+    <node name="gps" pkg="gps" type="gps" output="screen" />
+</launch>

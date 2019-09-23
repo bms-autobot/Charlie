@@ -552,7 +552,7 @@ namespace zed_wrapper {
                     if (depth_SubNumber > 0) {
                         zed->retrieveMeasure(depthZEDMat, sl::MEASURE_DEPTH);
                         publishCamInfo(depth_cam_info_msg, pub_depth_cam_info, t);
-                        publishDepth(toCVMat(depthZEDMat), pub_depth, depth_frame_id, t); // in meters
+                        //publishDepth(toCVMat(depthZEDMat), pub_depth, depth_frame_id, t); // in meters
                     }
 
                     // Publish the point cloud if someone has subscribed to
@@ -562,7 +562,7 @@ namespace zed_wrapper {
                         zed->retrieveMeasure(cloud, sl::MEASURE_XYZBGRA);
                         point_cloud_frame_id = cloud_frame_id;
                         point_cloud_time = t;
-                        publishPointCloud(width, height, pub_cloud);
+                        //publishPointCloud(width, height, pub_cloud);
                     }
 
                     // Publish the odometry if someone has subscribed to

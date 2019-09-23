@@ -7,8 +7,3 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/ubuntu/catkin_ws/devel_isolated/robot_setup_tf:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/ubuntu/catkin_ws/devel_isolated/robot_setup_tf/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/ubuntu/catkin_ws/devel_isolated/robot_setup_tf/lib/pkgconfig:$PKG_CONFIG_PATH"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/ubuntu/catkin_ws/devel_isolated/robot_setup_tf/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/ubuntu/catkin_ws/src/robot_setup_tf:$ROS_PACKAGE_PATH"

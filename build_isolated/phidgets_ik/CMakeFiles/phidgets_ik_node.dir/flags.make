@@ -6,5 +6,5 @@ CXX_FLAGS = -O3 -DNDEBUG   -Wall
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_PACKAGE_NAME=\"phidgets_ik\"
 
-CXX_INCLUDES = -I/home/ubuntu/catkin_ws/devel_isolated/phidgets_ik/include -I/home/ubuntu/catkin_ws/src/phidgets_drivers/phidgets_ik/include -I/home/ubuntu/catkin_ws/src/phidgets_drivers/phidgets_api/include -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/home/ubuntu/catkin_ws/devel_isolated/libphidget21/include 
+CXX_INCLUDES = -I/home/ubuntu/catkin_ws/devel_isolated/phidgets_ik/include -I/home/ubuntu/catkin_ws/src/phidgets_drivers/phidgets_ik/include -I/home/ubuntu/catkin_ws/src/phidgets_drivers/phidgets_api/include -I/home/ubuntu/catkin_ws/devel_isolated/libphidget21/include -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp 
 

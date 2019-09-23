@@ -380,6 +380,7 @@ int mrsApp()
 	// Add and run the sensor
 	//
 	printInfoMessage("mrsApp: Adding the LDMRS device.", true);
+	//printInfoMessage("mrsApp: testing", true); // added for testing - Ari 4/22/19
 	type = Sourcetype_LDMRS;
 	name = "LDMRS-1";
 	id = 1;

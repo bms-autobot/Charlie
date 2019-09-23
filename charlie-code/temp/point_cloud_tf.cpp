@@ -13,7 +13,7 @@ int main(int argc, char** argv){
     broadcaster.sendTransform(
       tf::StampedTransform(
         tf::Transform(tf::transfrmations::quaternion_from_euler(-1.5707963267948966, 0, -1.7447963267948966), tf::Vector3(0, 0.0, 0.838)),
-        ros::Time::now(),"base_link", "zer_wrapper_node"));
+        ros::Time::now(),"base_link", "zer_wrapper_node")); // should "zer" be "zed"? -Ari 3/27/19
     r.sleep();
   }
 }

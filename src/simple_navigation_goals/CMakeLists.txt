@@ -104,8 +104,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES simple_navigation_goals
-#  CATKIN_DEPENDS actionlib move_base_msgs roscpp
+   LIBRARIES simple_navigation_goals # uncommented this and the line below -Ari 4/17/19
+   CATKIN_DEPENDS actionlib move_base_msgs roscpp
 #  DEPENDS system_lib
 )
 
@@ -128,7 +128,7 @@ include_directories(
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-# add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS}) # uncommented this. -Ari 4/15/19
 
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
@@ -144,10 +144,11 @@ include_directories(
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS}) # added. -Ari 4/16/19
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(${PROJECT_NAME}_node
-#   ${catkin_LIBRARIES}
+# target_link_libraries(${PROJECT_NAME}_node # uncommented this -Ari 4/14/19
+#  ${catkin_LIBRARIES}
 # )
 
 #############
@@ -187,6 +188,11 @@ include_directories(
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
 
+# added this because the line tracking cmakelists had it -Ari 4/17/19
+install(DIRECTORY launch
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
+
 #############
 ## Testing ##
 #############
@@ -199,7 +205,7 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-add_executable(simple_navigation_goals src/simple_navigation_goals.cpp)
+add_executable(simple_navigation_goals src/simple_navigation_goals.cpp) 
 set_target_properties(simple_navigation_goals PROPERTIES OUTPUT_NAME simple_navigation_goals)
 target_link_libraries(simple_navigation_goals ${catkin_LIBRARIES})
 

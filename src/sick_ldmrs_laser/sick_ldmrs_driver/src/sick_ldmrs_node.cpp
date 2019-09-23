@@ -530,6 +530,7 @@ int main(int argc, char **argv)
   bool result = false;
 
   ROS_INFO("Adding the application SickLDMRS.");
+  ROS_INFO("testing... -Ari 4/22/19"); // added for testing -Ari 4/22/19
   name = "Sick LDMRS ROS Driver App";
   id = 1356;
 

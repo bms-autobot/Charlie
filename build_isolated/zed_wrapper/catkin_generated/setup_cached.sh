@@ -7,9 +7,3 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/ubuntu/catkin_ws/devel_isolated/zed_wrapper:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/ubuntu/catkin_ws/devel_isolated/zed_wrapper/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/ubuntu/catkin_ws/devel_isolated/zed_wrapper/lib/pkgconfig:$PKG_CONFIG_PATH"
-export PYTHONPATH="/home/ubuntu/catkin_ws/devel_isolated/zed_wrapper/lib/python2.7/dist-packages:$PYTHONPATH"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/ubuntu/catkin_ws/devel_isolated/zed_wrapper/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/ubuntu/catkin_ws/src/zed-wrapper:$ROS_PACKAGE_PATH"

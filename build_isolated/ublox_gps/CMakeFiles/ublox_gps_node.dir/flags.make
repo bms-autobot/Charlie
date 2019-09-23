@@ -6,5 +6,5 @@ CXX_FLAGS =  -lrt -pthread -O3 -DNDEBUG
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_PACKAGE_NAME=\"ublox_gps\"
 
-CXX_INCLUDES = -I/home/ubuntu/catkin_ws/src/ublox/ublox_gps/include -I/home/ubuntu/catkin_ws/install_isolated/include -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp 
+CXX_INCLUDES = -I/home/ubuntu/catkin_ws/src/ublox/ublox_gps/include -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/home/ubuntu/catkin_ws/install_isolated/include 
 

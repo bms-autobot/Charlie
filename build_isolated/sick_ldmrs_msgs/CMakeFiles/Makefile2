@@ -878,11 +878,11 @@ clean: CMakeFiles/std_msgs_generate_messages_eus.dir/clean
 # Target rules for target CMakeFiles/sick_ldmrs_msgs_generate_messages.dir
 
 # All Build rule for target.
+CMakeFiles/sick_ldmrs_msgs_generate_messages.dir/all: CMakeFiles/sick_ldmrs_msgs_generate_messages_cpp.dir/all
+CMakeFiles/sick_ldmrs_msgs_generate_messages.dir/all: CMakeFiles/sick_ldmrs_msgs_generate_messages_eus.dir/all
 CMakeFiles/sick_ldmrs_msgs_generate_messages.dir/all: CMakeFiles/sick_ldmrs_msgs_generate_messages_py.dir/all
 CMakeFiles/sick_ldmrs_msgs_generate_messages.dir/all: CMakeFiles/sick_ldmrs_msgs_generate_messages_nodejs.dir/all
 CMakeFiles/sick_ldmrs_msgs_generate_messages.dir/all: CMakeFiles/sick_ldmrs_msgs_generate_messages_lisp.dir/all
-CMakeFiles/sick_ldmrs_msgs_generate_messages.dir/all: CMakeFiles/sick_ldmrs_msgs_generate_messages_cpp.dir/all
-CMakeFiles/sick_ldmrs_msgs_generate_messages.dir/all: CMakeFiles/sick_ldmrs_msgs_generate_messages_eus.dir/all
 	$(MAKE) -f CMakeFiles/sick_ldmrs_msgs_generate_messages.dir/build.make CMakeFiles/sick_ldmrs_msgs_generate_messages.dir/depend
 	$(MAKE) -f CMakeFiles/sick_ldmrs_msgs_generate_messages.dir/build.make CMakeFiles/sick_ldmrs_msgs_generate_messages.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/catkin_ws/build_isolated/sick_ldmrs_msgs/CMakeFiles --progress-num= "Built target sick_ldmrs_msgs_generate_messages"

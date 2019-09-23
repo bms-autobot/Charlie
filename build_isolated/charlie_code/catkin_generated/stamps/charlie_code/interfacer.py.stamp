@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+# I don't think this is a file that is being run - Ari 3/29/19
+
 import rospy
 import sys
 import serial
@@ -135,12 +137,11 @@ def twistCallback(data):
     turn  = data.angular.z
 
     # calculate wheel velocities
-    leftVelocity = (velocity - turn * WHEEL_SEPARATION / 2.0) / WHEEL_RADIUS
-    rightVelocity = (velocity + turn * WHEEL_SEPARATION / 2.0) / WHEEL_RADIUS
+    leftVelocity = (velocity - turn * WHEEL_SEPARATION / 2.0) / WHEEL_RADIUS 
+    rightVelocity = (velocity + turn * WHEEL_SEPARATION / 2.0) / WHEEL_RADIUS 
     # remap values to ints for sending
     globalLeftVelocity = int(map(leftVelocity, -3.0, 3.0, 0, 4095))
     globalRightVelocity = int(map(rightVelocity, -3.0, 3.0, 0, 4095))
-
 
 def findPort():
     # find the correct serial port

@@ -23,9 +23,18 @@ simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_naviga
 simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/actionlib_msgs/GoalStatus.h
 simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/actionlib_msgs/GoalStatusArray.h
 simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Point.h
+simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/geometry_msgs/PointStamped.h
 simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Pose.h
 simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/geometry_msgs/PoseStamped.h
+simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/geometry_msgs/PoseWithCovariance.h
 simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Quaternion.h
+simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/geometry_msgs/QuaternionStamped.h
+simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Transform.h
+simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/geometry_msgs/TransformStamped.h
+simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Twist.h
+simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/geometry_msgs/TwistWithCovariance.h
+simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Vector3.h
+simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Vector3Stamped.h
 simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/move_base_msgs/MoveBaseAction.h
 simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/move_base_msgs/MoveBaseActionFeedback.h
 simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/move_base_msgs/MoveBaseActionGoal.h
@@ -33,6 +42,7 @@ simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_naviga
 simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/move_base_msgs/MoveBaseFeedback.h
 simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/move_base_msgs/MoveBaseGoal.h
 simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/move_base_msgs/MoveBaseResult.h
+simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/nav_msgs/Odometry.h
 simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/ros/advertise_options.h
 simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/ros/advertise_service_options.h
 simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/ros/assert.h
@@ -90,6 +100,15 @@ simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_naviga
 simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/ros/wall_timer_options.h
 simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/rosconsole/macros_generated.h
 simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/std_msgs/Header.h
+simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/std_msgs/String.h
+simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/tf/LinearMath/Matrix3x3.h
+simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/tf/LinearMath/MinMax.h
+simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/tf/LinearMath/QuadWord.h
+simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/tf/LinearMath/Quaternion.h
+simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/tf/LinearMath/Scalar.h
+simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/tf/LinearMath/Transform.h
+simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/tf/LinearMath/Vector3.h
+simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/tf/transform_datatypes.h
 simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/xmlrpcpp/XmlRpcDecl.h
 simple_navigation_goals/CMakeFiles/simple_navigation_goals.dir/src/simple_navigation_goals.cpp.o: /opt/ros/kinetic/include/xmlrpcpp/XmlRpcValue.h
 

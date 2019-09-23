@@ -150,6 +150,9 @@ include_directories(
 #   ${catkin_LIBRARIES}
 # )
 
+# adding this to try to get ublox_msgs.so to work, not quite sure on syntax - Ari 4/9/19
+# target_link_libraries(${robot_setup_tf} ${catkin_LIBRARIES} home/ubuntu/catkin_ws/install_isolated/lib/libublox_msgs.so)
+
 #############
 ## Install ##
 #############

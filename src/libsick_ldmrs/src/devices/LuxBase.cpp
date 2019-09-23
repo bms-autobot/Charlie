@@ -218,7 +218,8 @@ bool LuxBase::initTcp(Tcp::DisconnectFunction function, void* obj)	// , bool beV
 	else
 	{
 		// Some devices dont have the UpsideDown flag so just ignore this error
-		infoMessage(m_longName + " UpsideDown not supported by firmware.", m_beVerbose);
+		infoMessage(m_longName + " UpsideDown not supported by firmware...", m_beVerbose);
+		// added ".." to above message for testing - Ari 4/22/19
 	}
 
 	// Start thread for reading temperature once a minute

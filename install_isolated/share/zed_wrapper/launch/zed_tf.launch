@@ -1,15 +1,23 @@
 <launch>
   <arg name="tf_prefix" default="" />
   <arg name="pi/2" value="1.5707963267948966" />
-  <arg name="optical_rotate" value="0 0 0 -$(arg pi/2) 0 -$(arg pi/2)" />
+  <arg name="optical_rotate" value="0 0 0 -$(arg pi/2) 0 -$(arg pi/2)" /> <!-- where is this used? (Ari 4/3/19) -->
 
   <node pkg="tf2_ros" type="static_transform_publisher" name="zed_base_link1"
-    args="0 0 0 0 0 0 1 map $(arg tf_prefix)/zed_initial_frame" />
+    args="0 0 0 0 0 0 1 map $(arg tf_prefix)/zed_initial_frame" /> 
+	<!--  x y z qx qy qz qw frame_id child_frame_id -->
+
+  <!-- adding tf publisher for zed right camera (Ari 4/3/19) -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="zed_base_link2"
+    args="0 0 0 0 0 0 1 $(arg tf_prefix)/zed_current_frame ZED_right_camera" />
+	<!--  x y z qx qy qz qw frame_id child_frame_id -->
 
   <node pkg="tf2_ros" type="static_transform_publisher" name="zed_base_link3"
-    args="0 0 0 0 0 0 1 $(arg tf_prefix)/zed_current_frame ZED_left_camera" />
+    args="0 0 0 0 0 0 1 $(arg tf_prefix)/zed_current_frame ZED_left_camera" /> 
+	<!--  x y z qx qy qz qw frame_id child_frame_id -->
 
   <node pkg="tf2_ros" type="static_transform_publisher" name="zed_base_link4"
-    args="0 0 0 -$(arg pi/2) 0 -$(arg pi/2) $(arg tf_prefix)/zed_current_frame zed_depth_frame" />
+    args="0 0 0 -$(arg pi/2) 0 -$(arg pi/2) $(arg tf_prefix)/zed_current_frame zed_depth_frame" /> 
+	<!--  x y z yaw pitch roll frame_id child_frame_id -->
 
 </launch>

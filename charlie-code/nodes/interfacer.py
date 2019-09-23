@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+# I don't think this is being run - Ari 3/29/19
+
 import rospy
 import sys
 import serial
@@ -54,7 +56,7 @@ def map(value, fromLow, fromHigh, toLow, toHigh):
     # figure out width of each range
     fromSpan = fromHigh - fromLow
     toSpan = toHigh - toLow
-    # convert left range into 0-1
+    # conver t left range into 0-1
     valueScaled = float(value - fromLow) / float(fromSpan)
     # convert 0-1 to a value in to range
     return toLow + (valueScaled * toSpan)
@@ -72,8 +74,8 @@ def twistCallback(data):
     velocity = data.linear.x
     turn  = data.angular.z
 
-    # calculate wheel velocities
-    leftVelocity = (velocity - turn * WHEEL_SEPARATION / 2.0) / WHEEL_RADIUS
+    # calculate wheel velocities 
+    leftVelocity = (velocity - turn * WHEEL_SEPARATION / 2.0) / WHEEL_RADIUS   #collin graf - to + on 10/6/2018
     rightVelocity = (velocity + turn * WHEEL_SEPARATION / 2.0) / WHEEL_RADIUS
     # remap values to ints for sending
     globalLeftVelocity = int(map(leftVelocity, -3.0, 3.0, 0, 4095))
